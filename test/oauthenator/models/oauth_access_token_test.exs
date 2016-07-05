@@ -1,10 +1,25 @@
 defmodule Oauthenator.OauthAccessTokenTest do
   use ExUnit.Case
   use Timex
-  alias Oauthenator.{Repo, OauthAccessToken}
+  alias Oauthenator.{Repo, OauthAccessToken, OauthClient}
+
+  @invalid_attrs %{}
 
   setup do
-    Ecto.Adapters.SQL.Sandbox.checkout(Oauthenator.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Oauthenator.Repo)
+    client = %OauthClient{random_id: "asdf", secret: "qwer", allowed_grant_types: "{}"} |> Repo.insert!
+    valid_attrs = %{token: "token", expires_at: DateTime.today, oauth_client_id: client.id}
+    {:ok, valid_attrs: valid_attrs}
+  end
+
+  test "changeset with valid attributes", %{valid_attrs: valid_attrs} do
+    changeset = OauthAccessToken.changeset(%OauthAccessToken{}, valid_attrs)
+    assert changeset.valid?
+  end
+
+  test "changeset with invalid attributes" do
+    changeset = OauthAccessToken.changeset(%OauthAccessToken{}, @invalid_attrs)
+    refute changeset.valid?
   end
 
   describe "get_access_token" do
@@ -31,5 +46,6 @@ defmodule Oauthenator.OauthAccessTokenTest do
       assert result == nil
     end
   end
+
 
 end

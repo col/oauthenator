@@ -1,8 +1,8 @@
-defmodule Oauthenator.Client do
+defmodule Oauthenator.OauthClient do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "oauth_client" do
+  schema "oauth_clients" do
     field :random_id, :string
     field :secret, :string
     field :allowed_grant_types, :string
