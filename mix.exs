@@ -13,7 +13,7 @@ defmodule Oauthenator.Mixfile do
 
   def application do
     [
-      applications: [:logger, :postgrex, :ecto, :timex, :timex_ecto],
+      applications: [:logger, :postgrex, :ecto, :timex, :timex_ecto, :poison],
       mod: {Oauthenator, []}
     ]
   end
@@ -22,7 +22,8 @@ defmodule Oauthenator.Mixfile do
     [{:postgrex, ">= 0.0.0"},
      {:ecto, "~> 2.0.0"},
      {:timex, "~> 2.2.1"},
-     {:timex_ecto, "~> 1.1.3"}]
+     {:timex_ecto, "~> 1.1.3"},
+     {:poison, "~> 1.5 or ~> 2.0"}]
   end
 
   defp aliases do

@@ -3,6 +3,7 @@ defmodule Oauthenator.OauthClient do
   import Ecto.Changeset
 
   schema "oauth_clients" do
+    field :name, :string
     field :random_id, :string
     field :secret, :string
     field :allowed_grant_types, :string
@@ -12,7 +13,7 @@ defmodule Oauthenator.OauthClient do
   end
 
   @required_fields ~w(random_id secret allowed_grant_types)
-  @optional_fields ~w(redirect_url)
+  @optional_fields ~w(name redirect_url)
 
   def changeset(model, params \\ :empty) do
     model |> cast(params, @required_fields, @optional_fields)
