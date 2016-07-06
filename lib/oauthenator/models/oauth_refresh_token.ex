@@ -1,11 +1,12 @@
 defmodule Oauthenator.OauthRefreshToken do
   use Ecto.Schema
+  use Timex.Ecto.Timestamps
   import Ecto.Changeset
 
   schema "oauth_refresh_tokens" do
     field :token, :string
-    field :expires_at, :integer
-    field :is_delete, :integer
+    field :expires_at, Timex.Ecto.DateTime
+    field :is_delete, :boolean
 
     belongs_to :user, Oauthenator.User
     belongs_to :oauth_client, Oauthenator.OauthClient

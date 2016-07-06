@@ -3,14 +3,14 @@ defmodule Oauthenator.OauthAccessToken do
   use Timex.Ecto.Timestamps
   import Ecto.Query
   import Ecto.Changeset
-  alias Oauthenator.{OauthAccessToken, Repo}
+  alias Oauthenator.{OauthAccessToken, Repo, User, OauthClient}
 
   schema "oauth_access_tokens" do
     field :token, :string
     field :expires_at, Timex.Ecto.DateTime
 
-    belongs_to :user, Oauthenator.User
-    belongs_to :oauth_client, Oauthenator.OauthClient
+    belongs_to :user, User
+    belongs_to :oauth_client, OauthClient
   end
 
   @required_fields ~w(token expires_at oauth_client_id)

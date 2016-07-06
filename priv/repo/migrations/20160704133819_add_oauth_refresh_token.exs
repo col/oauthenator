@@ -4,8 +4,8 @@ defmodule Oauthenator.Repo.Migrations.AddOauthRefreshToken do
   def change do
     create table(:oauth_refresh_tokens) do
       add :token, :string
-      add :expires_at, :integer
-      add :is_delete, :integer
+      add :expires_at, :timestamp
+      add :is_delete, :boolean
 
       add :user_id, references(:users, on_delete: :nothing)
       add :oauth_client_id, references(:oauth_clients, on_delete: :nothing)
