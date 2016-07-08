@@ -19,11 +19,14 @@ defmodule Oauthenator.Mixfile do
   end
 
   defp deps do
-    [{:postgrex, ">= 0.0.0"},
-     {:ecto, "~> 2.0.0"},
-     {:timex, "~> 2.2.1"},
-     {:timex_ecto, "~> 1.1.3"},
-     {:poison, "~> 1.5 or ~> 2.0"}]
+    [
+      {:postgrex, ">= 0.0.0"},
+      {:ecto, "~> 2.0.0"},
+      {:timex, "~> 2.2.1"},
+      {:timex_ecto, "~> 1.1.3"},
+      {:poison, "~> 1.5 or ~> 2.0"},
+      {:plug, "~> 1.1.6"}
+    ]
   end
 
   defp aliases do
