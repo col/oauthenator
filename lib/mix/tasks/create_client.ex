@@ -5,15 +5,16 @@ defmodule Mix.Tasks.Oauthenator.CreateClient do
   alias Oauthenator.Repo
 
   @fields [:name, :random_id, :secret, :allowed_grant_types, :redirect_url]
-  @grant_types [:password, :client_credentials, :refresh_token]
+  @grant_types [:password, :client_credentials, :refresh_token, :authorization_code]
 
   @shortdoc "Creates an oauth client."
 
   @moduledoc """
     The list of grant types are :
-      password
+      authorization-code
       client-credentials
       refresh-token
+      password
 
     Options :
       name
