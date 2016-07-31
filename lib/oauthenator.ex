@@ -9,6 +9,7 @@ defmodule Oauthenator do
       alias Oauthenator.User
       alias Oauthenator.OauthClient
       alias Oauthenator.OauthAccessToken
+      alias Oauthenator.OauthAuthCode
       alias Oauthenator.OauthRefreshToken
     end
   end
